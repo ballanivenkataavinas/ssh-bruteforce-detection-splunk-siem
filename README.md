@@ -1,11 +1,11 @@
-# 🔐 SSH Brute Force Detection using Splunk SIEM
+# SSH Brute Force Detection using Splunk SIEM
 
-## 📌 Overview
+##  Overview
 This project simulates an SSH brute-force attack and demonstrates how a SIEM detects suspicious authentication activity using centralized log monitoring.
 
 ---
 
-## 🧱 Lab Setup
+## Lab Setup
 
 - Attacker: Kali Linux  
 - Victim: Ubuntu Server  
@@ -13,7 +13,7 @@ This project simulates an SSH brute-force attack and demonstrates how a SIEM det
 
 ---
 
-## ⚔️ Attack Simulation
+##  Attack Simulation
 
 A brute-force attack was performed using Hydra:
 
@@ -21,24 +21,24 @@ A brute-force attack was performed using Hydra:
 hydra -l root -P rockyou.txt ssh://<victim-ip>
 This generated multiple failed login attempts on the target system.
 
-📡 Log Collection
+ Log Collection
 Log Source: /var/log/auth.log
 Logs forwarded using Splunk Universal Forwarder
-🔍 Detection Query (Splunk SPL)
+ Detection Query (Splunk SPL)
 index=* "Failed password"
 | stats count by src_ip
 | where count > 10
-🚨 Alerting
 
+ Alerting
 An alert was configured to trigger when:
 
 Failed login attempts exceed 10
 Time window: 5 minutes
-🎯 Outcome
 
+Outcome
 Successfully identified brute-force attack patterns and demonstrated real-time detection using SIEM.
 
-🧠 Skills Demonstrated
+Skills Demonstrated
 SIEM Monitoring
 Log Analysis
 Threat Detection
